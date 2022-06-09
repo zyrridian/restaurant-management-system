@@ -30,6 +30,9 @@ Partial Class CashierNavigationForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.EmployeeIDToolStripLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -85,6 +88,7 @@ Partial Class CashierNavigationForm
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.EmployeeIDToolStripLabel})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 338)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(480, 22)
@@ -126,6 +130,17 @@ Partial Class CashierNavigationForm
         Me.Button3.Text = "x"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(79, 17)
+        Me.ToolStripStatusLabel1.Text = "Employee ID: "
+        '
+        'EmployeeIDToolStripLabel
+        '
+        Me.EmployeeIDToolStripLabel.Name = "EmployeeIDToolStripLabel"
+        Me.EmployeeIDToolStripLabel.Size = New System.Drawing.Size(0, 17)
+        '
         'CashierNavigationForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -141,6 +156,8 @@ Partial Class CashierNavigationForm
         Me.Name = "CashierNavigationForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CashierNavigationForm"
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -156,4 +173,6 @@ Partial Class CashierNavigationForm
     Friend WithEvents Label3 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Button3 As Button
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents EmployeeIDToolStripLabel As ToolStripStatusLabel
 End Class

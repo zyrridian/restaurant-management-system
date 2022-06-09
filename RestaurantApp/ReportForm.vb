@@ -43,6 +43,8 @@ Public Class ReportForm
         Dim thisDate As Date
         Dim kosong As Boolean
         Dim profit As Double = 0
+        Dim carbo As Double = 0
+        Dim protein As Double = 0
         Dim num As Integer = ComboBox1.SelectedIndex + 1
 
         For i As Integer = ComboBox1.SelectedIndex To ComboBox2.SelectedIndex
@@ -71,13 +73,24 @@ Public Class ReportForm
             dr = read2.ExecuteReader
             While dr.Read()
                 profit += dr!TotalPrice
+                carbo += dr!TotalCarbo
+                protein += dr!TotalProtein
             End While
             dr.Close()
             read2.Dispose()
 
             'Hitung pendapatan dalam satuan juta, lalu tambahkan ke Chart
             profit /= 1000000
-            Chart1.Series("Income").Points.AddXY(thisDate.ToString("MMMM"), Math.Round(profit, 2))
+
+            '(opsional) Menampilkan diagram untuk carbo & protein ketika CheckBox1 bertanda centang
+            If CheckBox1.Checked = True Then
+                Chart1.Titles("Title1").Text = "Carbo and Protein"
+                Chart1.Series("Carbo").Points.AddXY(thisDate.ToString("MMMM"), Math.Round(carbo, 2))
+                Chart1.Series("Protein").Points.AddXY(thisDate.ToString("MMMM"), Math.Round(protein, 2))
+            Else
+                Chart1.Titles("Title1").Text = "Income in Million"
+                Chart1.Series("Income").Points.AddXY(thisDate.ToString("MMMM"), Math.Round(profit, 2))
+            End If
             num += 1
         Next
 

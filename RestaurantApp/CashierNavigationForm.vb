@@ -7,7 +7,7 @@
         Dim result As DialogResult = MessageBox.Show("Yakin ingin logout?", "Konfirmasi", MessageBoxButtons.YesNo)
         If result = DialogResult.Yes Then
             LoginForm.Show()
-            Me.Close()
+            Close()
         End If
     End Sub
 End Class

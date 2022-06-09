@@ -72,7 +72,7 @@ Public Class OrderForm
             If Not DataGridView1.Item(e.ColumnIndex, e.RowIndex).Value.ToString.Length = Nothing Then
                 menuID = DataGridView1.Rows(e.RowIndex).Cells(0).Value
                 TextBox1.Text = DataGridView1.Rows(e.RowIndex).Cells(1).Value
-                PictureBox1.Image = Image.FromFile("D:\Projects\[DESKTOP]\RestaurantApp\RestaurantApp\" + DataGridView1.Rows(e.RowIndex).Cells(5).Value)
+                PictureBox1.Image = Image.FromFile("D:\Projects\Programming\DesktopAppProjects\RestaurantApp\" + DataGridView1.Rows(e.RowIndex).Cells(5).Value)
             End If
         End If
 
@@ -86,6 +86,7 @@ Public Class OrderForm
 
         Else 'Jika data tidak kosong
 
+            'Lakukan pengulangan (for) untuk mengecek apakah menu sudah ada
             Dim test As Boolean = False
             For Each row In DataGridView2.Rows
                 If TextBox1.Text = row.Cells("name").Value Then
@@ -94,8 +95,9 @@ Public Class OrderForm
                 End If
             Next
 
-            If test = False Then
+            If test = False Then 'Jika menu belum dimasukkan
 
+                'Ambil data carbo, protein, dan price sesuai menu yang dipilih
                 Dim qty As Integer = Convert.ToInt32(TextBox2.Text)
                 Dim carbo, protein, price As New Integer
                 Dim read As New SqlCommand("SELECT * FROM MsMenu WHERE MenuID = @MenuID", conn)
@@ -110,28 +112,32 @@ Public Class OrderForm
                 dr.Close()
                 read.Dispose()
 
+                'Tambahkan menu ke DataGridView2
                 DataGridView2.Rows.Add(New String() {TextBox1.Text, qty, (carbo * qty), (protein * qty), price, (price * qty)})
 
                 Dim totalCarbo As Integer
                 Dim totalProtein As Integer
                 Dim totalPrice As Integer
 
+                'Lakukan pengulangan (for) untuk menjumlahkan TotalCarbo, TotalProtein, dan TotalPrice dari menu yang sudah ditambahkan
                 For j As Integer = 0 To DataGridView2.Rows.Count - 1
                     totalCarbo += DataGridView2.Rows(j).Cells(2).Value
                     totalProtein += DataGridView2.Rows(j).Cells(3).Value
                     totalPrice += DataGridView2.Rows(j).Cells(5).Value
                 Next
 
+                'Tampilkan datanya ke label
                 carboLabel.Text = totalCarbo.ToString()
                 proteinLabel.Text = totalProtein.ToString()
-                priceLabel.Text = String.Format("{0:n}", totalPrice)
+                priceLabel.Text = String.Format("{0:n}", totalPrice) 'Format khusus agar jumlah uang lebih mudah dibaca
 
                 TextBox1.Text = ""
                 TextBox2.Text = ""
                 PictureBox1.Image = Nothing
 
-            Else
+            Else 'Jika menu sudah dimasukan, tambahkan jumlah 'Qty' nya
 
+                'Ambil posisi atau index menu yang sudah dimasukkan
                 Dim rowIndex As Integer = -1
                 For Each rows In DataGridView2.Rows
                     If rows.Cells(0).Value.ToString.Equals(TextBox1.Text) Then
@@ -140,6 +146,7 @@ Public Class OrderForm
                     End If
                 Next
 
+                'Ambil data carbo, protein, dan price sesuai menu yang dipilih
                 Dim qty As Integer = DataGridView2.Rows(rowIndex).Cells(1).Value + Convert.ToInt32(TextBox2.Text)
                 Dim carbo, protein, price As New Integer
                 Dim read As New SqlCommand("SELECT * FROM MsMenu WHERE MenuID = @MenuID", conn)
@@ -156,6 +163,7 @@ Public Class OrderForm
 
                 MsgBox("Jumlah menu sudah berubah")
 
+                'Hapus data yang duplikat, lalu ganti dengan yang baru
                 DataGridView2.Rows(rowIndex).Selected = True
                 DataGridView2.Rows.Remove(DataGridView2.SelectedRows(0))
                 DataGridView2.Rows.Add(New String() {TextBox1.Text, qty, (carbo * qty), (protein * qty), price, (price * qty)})
@@ -164,6 +172,7 @@ Public Class OrderForm
                 Dim totalProtein As Integer
                 Dim totalPrice As Integer
 
+                'Lakukan pengulangan (for) untuk menjumlahkan TotalCarbo, TotalProtein, dan TotalPrice dari menu yang sudah ditambahkan
                 For j As Integer = 0 To DataGridView2.Rows.Count - 1
                     totalCarbo += DataGridView2.Rows(j).Cells(2).Value
                     totalProtein += DataGridView2.Rows(j).Cells(3).Value
@@ -172,7 +181,7 @@ Public Class OrderForm
 
                 carboLabel.Text = totalCarbo.ToString()
                 proteinLabel.Text = totalProtein.ToString()
-                priceLabel.Text = String.Format("{0:n}", totalPrice)
+                priceLabel.Text = String.Format("{0:n}", totalPrice) 'Format khusus agar jumlah uang lebih mudah dibaca
 
                 TextBox1.Text = ""
                 TextBox2.Text = ""
@@ -186,22 +195,25 @@ Public Class OrderForm
 
     Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
 
-        If DataGridView2.SelectedRows.Count > 0 Then
+        If DataGridView2.SelectedRows.Count > 0 Then 'Jika baris yang ingin dihapus sudah dipilih
             Dim result As DialogResult = MessageBox.Show("Yakin ingin menghapus data?", "Konfirmasi", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
+
                 MsgBox("Data berhasil dihapus!")
-                DataGridView2.Rows.Remove(DataGridView2.SelectedRows(0))
+                DataGridView2.Rows.Remove(DataGridView2.SelectedRows(0)) 'Hapus data yang dipilih
 
                 Dim totalCarbo As Integer
                 Dim totalProtein As Integer
                 Dim totalPrice As Integer
 
+                'Lakukan pengulangan (for) untuk menghitung ulang TotalCarbo, TotalProtein, dan TotalPrice
                 For j As Integer = 0 To DataGridView2.Rows.Count - 1
                     totalCarbo += DataGridView2.Rows(j).Cells(2).Value
                     totalProtein += DataGridView2.Rows(j).Cells(3).Value
                     totalPrice += DataGridView2.Rows(j).Cells(5).Value
                 Next
 
+                'Tampilkan datanya ke label
                 carboLabel.Text = totalCarbo.ToString()
                 proteinLabel.Text = totalProtein.ToString()
                 priceLabel.Text = String.Format("{0:n}", totalPrice)
@@ -211,7 +223,7 @@ Public Class OrderForm
                 PictureBox1.Image = Nothing
 
             End If
-        Else
+        Else 'Jika baris yang ingin dihapus belum dipilih
             MsgBox("Pilih menu yang ingin dihapus")
         End If
 
@@ -224,10 +236,12 @@ Public Class OrderForm
         If result = DialogResult.Yes Then
 
             GenerateOrderHeaderID()
+            Call Koneksi()
 
+            'Masukkan data ke tabel OrderHeader
             Dim insertOrderHeader As New SqlCommand("INSERT INTO OrderHeader VALUES (@OrderHeaderID, @EmployeeID, @MemberID, @Date, @PaymentType, @CardNumber, @Bank)", conn)
             insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@OrderHeaderID", .Value = orderHeaderID})
-            insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@EmployeeID", .Value = "ADM001"})
+            insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@EmployeeID", .Value = AdminNavigationForm.EmployeeIDToolStripLabel.Text})
             insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@MemberID", .Value = 1})
             insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@Date", .Value = thisDate})
             insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@PaymentType", .Value = ""})
@@ -243,8 +257,7 @@ Public Class OrderForm
             Dim totalProtein As Integer
             Dim totalPrice As Integer
 
-            Call Koneksi()
-
+            'Lakukan pengulangan (for) untuk memasukkan semua baris yang ada pada DataGridView2
             For row As Integer = 0 To DataGridView2.Rows.Count - 2
 
                 name = DataGridView2.Rows(row).Cells(0).Value
@@ -253,6 +266,7 @@ Public Class OrderForm
                 totalProtein = DataGridView2.Rows(row).Cells(3).Value
                 totalPrice = DataGridView2.Rows(row).Cells(5).Value
 
+                'Mengambil MenuID berdasarkan nama yang ada di TextBox1
                 Dim read As New SqlCommand("SELECT * FROM MsMenu WHERE Name = @Name", conn)
                 read.Parameters.Add(New SqlParameter With {.ParameterName = "@Name", .Value = name})
                 dr = read.ExecuteReader
@@ -263,6 +277,7 @@ Public Class OrderForm
                 dr.Close()
                 read.Dispose()
 
+                'Memasukkan data ke tabel OrderDetail
                 Dim insert As New SqlCommand("INSERT INTO OrderDetail VALUES (@OrderHeaderID, @MenuID, @Qty, @TotalPrice, @TotalCarbo, @TotalProtein, @Status)", conn)
                 insert.Parameters.Add(New SqlParameter With {.ParameterName = "@OrderHeaderID", .Value = orderHeaderID})
                 insert.Parameters.Add(New SqlParameter With {.ParameterName = "@MenuID", .Value = menuID})
@@ -277,7 +292,6 @@ Public Class OrderForm
             Next
 
             MsgBox("Order berhasil")
-
             LoadData()
 
         End If
@@ -285,18 +299,7 @@ Public Class OrderForm
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.Close()
+        Close()
     End Sub
 
-    Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
-
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
 End Class

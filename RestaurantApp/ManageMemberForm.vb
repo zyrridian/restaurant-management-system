@@ -38,10 +38,12 @@ Public Class ManageMemberForm
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
+        'Validasi agar tidak terjadi error ketika DataGridView diklik
         If e.ColumnIndex >= 0 And e.RowIndex >= 0 Then
 
             If Not DataGridView1.Item(e.ColumnIndex, e.RowIndex).Value.ToString.Length = Nothing Then
 
+                'Tampilkan data ketika DataGridView diklik
                 TextBox2.Text = DataGridView1.Rows(e.RowIndex).Cells(0).Value
                 TextBox3.Text = DataGridView1.Rows(e.RowIndex).Cells(1).Value
                 TextBox4.Text = DataGridView1.Rows(e.RowIndex).Cells(2).Value
@@ -56,6 +58,7 @@ Public Class ManageMemberForm
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
 
+        'Tampilkan data yang diketik di kolom pencarian (search)
         Call Koneksi()
         da = New SqlDataAdapter("SELECT * FROM MsMember WHERE Name LIKE '%" & TextBox1.Text & "%' OR Email LIKE '%" & TextBox1.Text & "%' OR Handphone LIKE '%" & TextBox1.Text & "%'", conn)
         ds = New DataSet
@@ -76,13 +79,13 @@ Public Class ManageMemberForm
             If result = DialogResult.Yes Then
 
                 Call Koneksi()
-                Dim salesinsert As New SqlCommand("INSERT INTO MsMember VALUES (@Name, @Email, @Handphone, @JoinDate)", conn)
-                salesinsert.Parameters.Add(New SqlParameter With {.ParameterName = "@Name", .Value = TextBox3.Text})
-                salesinsert.Parameters.Add(New SqlParameter With {.ParameterName = "@Email", .Value = TextBox4.Text})
-                salesinsert.Parameters.Add(New SqlParameter With {.ParameterName = "@Handphone", .Value = TextBox5.Text})
-                salesinsert.Parameters.Add(New SqlParameter With {.ParameterName = "@JoinDate", .Value = Today})
-                salesinsert.ExecuteNonQuery()
-                salesinsert.Dispose()
+                Dim insert As New SqlCommand("INSERT INTO MsMember VALUES (@Name, @Email, @Handphone, @JoinDate)", conn)
+                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@Name", .Value = TextBox3.Text})
+                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@Email", .Value = TextBox4.Text})
+                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@Handphone", .Value = TextBox5.Text})
+                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@JoinDate", .Value = Today})
+                insert.ExecuteNonQuery()
+                insert.Dispose()
 
                 MsgBox("Insert data berhasil!")
                 LoadData()

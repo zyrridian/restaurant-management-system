@@ -33,6 +33,9 @@ Partial Class AdminNavigationForm
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.EmployeeIDToolStripLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -144,6 +147,7 @@ Partial Class AdminNavigationForm
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.EmployeeIDToolStripLabel})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 338)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(480, 22)
@@ -172,6 +176,19 @@ Partial Class AdminNavigationForm
         Me.Panel1.Size = New System.Drawing.Size(480, 100)
         Me.Panel1.TabIndex = 10
         '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(79, 17)
+        Me.ToolStripStatusLabel1.Text = "Employee ID: "
+        '
+        'EmployeeIDToolStripLabel
+        '
+        Me.EmployeeIDToolStripLabel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.EmployeeIDToolStripLabel.Name = "EmployeeIDToolStripLabel"
+        Me.EmployeeIDToolStripLabel.Size = New System.Drawing.Size(0, 17)
+        '
         'AdminNavigationForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -192,6 +209,8 @@ Partial Class AdminNavigationForm
         Me.Name = "AdminNavigationForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AdminNavigationForm"
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -210,4 +229,6 @@ Partial Class AdminNavigationForm
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents Label3 As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents EmployeeIDToolStripLabel As ToolStripStatusLabel
 End Class

@@ -13,16 +13,20 @@ Public Class LoginForm
             If dr.HasRows Then
 
                 MsgBox("Berhasil Login")
-                Me.Hide()
+                Hide()
 
                 Dim level As String = dr!Position
+                Dim emloyeeID As String = dr!EmployeeID
                 Dim name As String = dr!Name
 
+                'Validasi role atau position
                 If level.ToLower = "admin" Then
                     AdminNavigationForm.Label3.Text = name
+                    AdminNavigationForm.EmployeeIDToolStripLabel.Text = emloyeeID
                     AdminNavigationForm.Show()
                 ElseIf level.ToLower = "cashier" Then
                     CashierNavigationForm.Label3.Text = name
+                    CashierNavigationForm.EmployeeIDToolStripLabel.Text = emloyeeID
                     CashierNavigationForm.Show()
                 End If
 
@@ -44,30 +48,8 @@ Public Class LoginForm
         TextBox2.Height = 30
     End Sub
 
-    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs)
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.Close()
+        Close()
     End Sub
-
-    'Private Sub Button1_MouseHover(sender As Object, e As EventArgs) Handles Button1.MouseHover
-    '    Button1.BackColor = Color.FromArgb(218, 41, 28)
-    '    Button1.ForeColor = Color.FromArgb(255, 255, 255)
-    'End Sub
-
-    'Private Sub Button1_MouseLeave(sender As Object, e As EventArgs) Handles Button1.MouseLeave
-    '    Button1.BackColor = Color.FromArgb(255, 255, 255)
-    '    Button1.ForeColor = Color.FromArgb(39, 37, 31)
-    'End Sub
 
 End Class

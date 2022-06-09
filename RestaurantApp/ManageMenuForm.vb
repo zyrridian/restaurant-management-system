@@ -10,6 +10,15 @@ Public Class ManageMenuForm
         da.Fill(ds, "MsMenu")
         DataGridView1.DataSource = (ds.Tables("MsMenu"))
 
+        TextBox1.Text = ""
+        TextBox2.Text = ""
+        TextBox3.Text = ""
+        TextBox4.Text = ""
+        TextBox5.Text = ""
+        TextBox6.Text = ""
+        TextBox7.Text = ""
+        PictureBox1.Image = Nothing
+
     End Sub
 
     Private Sub ManageMenuForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -35,10 +44,12 @@ Public Class ManageMenuForm
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
+        'Validasi agar tidak terjadi error ketika DataGridView diklik
         If e.ColumnIndex >= 0 And e.RowIndex >= 0 Then
 
             If Not DataGridView1.Item(e.ColumnIndex, e.RowIndex).Value.ToString.Length = Nothing Then
 
+                'Tampilkan data ketika DataGridView diklik
                 TextBox2.Text = DataGridView1.Rows(e.RowIndex).Cells(0).Value
                 TextBox3.Text = DataGridView1.Rows(e.RowIndex).Cells(1).Value
                 TextBox4.Text = DataGridView1.Rows(e.RowIndex).Cells(2).Value
@@ -46,7 +57,7 @@ Public Class ManageMenuForm
                 TextBox6.Text = DataGridView1.Rows(e.RowIndex).Cells(4).Value
                 TextBox7.Text = DataGridView1.Rows(e.RowIndex).Cells(5).Value
 
-                PictureBox1.Image = Image.FromFile("D:\Projects\[DESKTOP]\RestaurantApp\RestaurantApp\" + DataGridView1.Rows(e.RowIndex).Cells(3).Value)
+                PictureBox1.Image = Image.FromFile("D:\Projects\Programming\DesktopAppProjects\RestaurantApp\" + DataGridView1.Rows(e.RowIndex).Cells(3).Value)
 
             End If
 
@@ -54,7 +65,7 @@ Public Class ManageMenuForm
 
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub InsertButton_Click(sender As Object, e As EventArgs) Handles InsertButton.Click
 
         If TextBox3.Text = "" Or TextBox4.Text = "" Or TextBox5.Text = "" Or TextBox6.Text = "" Or TextBox7.Text = "" Then
 
@@ -88,7 +99,7 @@ Public Class ManageMenuForm
 
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub UpdateButton_Click(sender As Object, e As EventArgs) Handles UpdateButton.Click
 
         If TextBox3.Text = "" Or TextBox4.Text = "" Or TextBox5.Text = "" Or TextBox6.Text = "" Or TextBox7.Text = "" Then
 
@@ -123,7 +134,7 @@ Public Class ManageMenuForm
 
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
 
         If TextBox2.Text = "" Then
 
@@ -135,7 +146,6 @@ Public Class ManageMenuForm
             If result = DialogResult.Yes Then
 
                 Call Koneksi()
-
                 Dim delete As New SqlCommand("DELETE MsMenu WHERE MenuID = @MenuID", conn)
                 delete.Parameters.Add(New SqlParameter With {.ParameterName = "@MenuID", .Value = TextBox2.Text})
                 delete.ExecuteNonQuery()
@@ -162,27 +172,23 @@ Public Class ManageMenuForm
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
-        'If PictureBox1.Image.Equals(Image.FromFile($"Picturebox{".rendang"}.jpg")) Then
-        '    Dim ImageNumber As Integer
-        '    If ImageNumber = 8 Then
-        '        ImageNumber = 1
-        '    Else
-        '        ImageNumber += 1
-        '    End If
-        '    PictureBox1.Image = Image.FromFile($"Picturbox{ImageNumber}.jpg")
-        'End If
-
-
-
-        'Dim open As New OpenFileDialog
-        'open.Filter = "Choose image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif"
-        'If open.ShowDialog = DialogResult.OK Then
-        '    PictureBox1.Image = Image.FromFile(open.FileName)
-        'End If
+        'Mencari gambar
+        Dim name As String
+        Dim open As New OpenFileDialog
+        open.Filter = "Choose image(*.jpg;*.jpeg;*.png;*.gif)|*.jpg;*.jpeg;*.png;*.gif"
+        If open.ShowDialog = DialogResult.OK Then
+            name = open.SafeFileName()
+            PictureBox1.Image = Image.FromFile(open.FileName)
+        End If
+        TextBox5.Text = name
 
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Close()
+        Close()
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        Call LoadData()
     End Sub
 End Class
