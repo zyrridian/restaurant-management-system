@@ -147,6 +147,9 @@
     <EmbeddedResource Include="CashierNavigationForm.resx">
       <DependentUpon>CashierNavigationForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManageMemberForm.resx">
       <DependentUpon>ManageMemberForm.vb</DependentUpon>
     </EmbeddedResource>

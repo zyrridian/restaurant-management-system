@@ -1,52 +1,33 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class AdminNavigationForm
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        ManageMemberForm.Show()
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        ManageMenuForm.Show()
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub OrderButton_Click(sender As Object, e As EventArgs) Handles OrderButton.Click
         OrderForm.Show()
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub MemberButton_Click(sender As Object, e As EventArgs) Handles MemberButton.Click
+        ManageMemberForm.Show()
+    End Sub
+
+    Private Sub MenuButton_Click(sender As Object, e As EventArgs) Handles MenuButton.Click
+        ManageMenuForm.Show()
+    End Sub
+
+    Private Sub PaymentButton_Click(sender As Object, e As EventArgs) Handles PaymentButton.Click
         PaymentForm.Show()
     End Sub
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-
+    Private Sub ReportButton_Click(sender As Object, e As EventArgs) Handles ReportButton.Click
         ReportForm.Show()
-
-        'Call Koneksi()
-
-        'cmd = New SqlCommand("SELECT * FROM OrderHeader WHERE OrderHeaderID IN (SELECT MAX(OrderHeaderID) FROM OrderHeader)", conn)
-
-        'Dim formatDate As String = DateTime.Now.ToString("yyyyMMdd")
-        'Dim urutanKode As String
-        'Dim hitung As Long
-        'dr = cmd.ExecuteReader
-        'dr.Read()
-        'If Not dr.HasRows Then
-        '    urutanKode = formatDate + "0001"
-        'Else
-        '    hitung = Microsoft.VisualBasic.Right(dr.GetString(0), 4) + 1
-        '    urutanKode = formatDate + Microsoft.VisualBasic.Right("0000" & hitung, 4)
-        'End If
-
-        'MsgBox(urutanKode)
-
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub LogoutButton_Click(sender As Object, e As EventArgs) Handles LogoutButton.Click
 
+        'Pesan konfirmasi sebelum logout
         Dim result As DialogResult = MessageBox.Show("Yakin ingin logout?", "Konfirmasi", MessageBoxButtons.YesNo)
         If result = DialogResult.Yes Then
             LoginForm.Show()
-            Me.Close()
+            Close()
         End If
 
     End Sub

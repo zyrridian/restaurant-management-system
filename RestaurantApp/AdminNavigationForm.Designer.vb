@@ -24,17 +24,17 @@ Partial Class AdminNavigationForm
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.OrderButton = New System.Windows.Forms.Button()
+        Me.MenuButton = New System.Windows.Forms.Button()
+        Me.MemberButton = New System.Windows.Forms.Button()
+        Me.LogoutButton = New System.Windows.Forms.Button()
+        Me.PaymentButton = New System.Windows.Forms.Button()
+        Me.ReportButton = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.EmployeeIDToolStripLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -61,89 +61,89 @@ Partial Class AdminNavigationForm
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Welcome, "
         '
-        'Button1
+        'OrderButton
         '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.Button1.Location = New System.Drawing.Point(49, 174)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(190, 30)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Order"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.OrderButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.OrderButton.FlatAppearance.BorderSize = 0
+        Me.OrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OrderButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OrderButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.OrderButton.Location = New System.Drawing.Point(49, 174)
+        Me.OrderButton.Name = "OrderButton"
+        Me.OrderButton.Size = New System.Drawing.Size(190, 30)
+        Me.OrderButton.TabIndex = 2
+        Me.OrderButton.Text = "Order"
+        Me.OrderButton.UseVisualStyleBackColor = False
         '
-        'Button2
+        'MenuButton
         '
-        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.Button2.Location = New System.Drawing.Point(49, 215)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(190, 30)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Manage Menu"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.MenuButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.MenuButton.FlatAppearance.BorderSize = 0
+        Me.MenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.MenuButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MenuButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.MenuButton.Location = New System.Drawing.Point(49, 215)
+        Me.MenuButton.Name = "MenuButton"
+        Me.MenuButton.Size = New System.Drawing.Size(190, 30)
+        Me.MenuButton.TabIndex = 3
+        Me.MenuButton.Text = "Manage Menu"
+        Me.MenuButton.UseVisualStyleBackColor = False
         '
-        'Button3
+        'MemberButton
         '
-        Me.Button3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.Button3.Location = New System.Drawing.Point(255, 174)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(190, 30)
-        Me.Button3.TabIndex = 4
-        Me.Button3.Text = "Manage Member"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.MemberButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.MemberButton.FlatAppearance.BorderSize = 0
+        Me.MemberButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.MemberButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MemberButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.MemberButton.Location = New System.Drawing.Point(255, 174)
+        Me.MemberButton.Name = "MemberButton"
+        Me.MemberButton.Size = New System.Drawing.Size(190, 30)
+        Me.MemberButton.TabIndex = 4
+        Me.MemberButton.Text = "Manage Member"
+        Me.MemberButton.UseVisualStyleBackColor = False
         '
-        'Button4
+        'LogoutButton
         '
-        Me.Button4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.Button4.Location = New System.Drawing.Point(255, 215)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(190, 30)
-        Me.Button4.TabIndex = 5
-        Me.Button4.Text = "Logout"
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.LogoutButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.LogoutButton.FlatAppearance.BorderSize = 0
+        Me.LogoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.LogoutButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LogoutButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.LogoutButton.Location = New System.Drawing.Point(255, 215)
+        Me.LogoutButton.Name = "LogoutButton"
+        Me.LogoutButton.Size = New System.Drawing.Size(190, 30)
+        Me.LogoutButton.TabIndex = 5
+        Me.LogoutButton.Text = "Logout"
+        Me.LogoutButton.UseVisualStyleBackColor = False
         '
-        'Button5
+        'PaymentButton
         '
-        Me.Button5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Button5.FlatAppearance.BorderSize = 0
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.Button5.Location = New System.Drawing.Point(49, 256)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(190, 30)
-        Me.Button5.TabIndex = 6
-        Me.Button5.Text = "Payment"
-        Me.Button5.UseVisualStyleBackColor = False
+        Me.PaymentButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.PaymentButton.FlatAppearance.BorderSize = 0
+        Me.PaymentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.PaymentButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PaymentButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.PaymentButton.Location = New System.Drawing.Point(49, 256)
+        Me.PaymentButton.Name = "PaymentButton"
+        Me.PaymentButton.Size = New System.Drawing.Size(190, 30)
+        Me.PaymentButton.TabIndex = 6
+        Me.PaymentButton.Text = "Payment"
+        Me.PaymentButton.UseVisualStyleBackColor = False
         '
-        'Button6
+        'ReportButton
         '
-        Me.Button6.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Button6.FlatAppearance.BorderSize = 0
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.Button6.Location = New System.Drawing.Point(255, 256)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(190, 30)
-        Me.Button6.TabIndex = 7
-        Me.Button6.Text = "Report"
-        Me.Button6.UseVisualStyleBackColor = False
+        Me.ReportButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.ReportButton.FlatAppearance.BorderSize = 0
+        Me.ReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ReportButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ReportButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.ReportButton.Location = New System.Drawing.Point(255, 256)
+        Me.ReportButton.Name = "ReportButton"
+        Me.ReportButton.Size = New System.Drawing.Size(190, 30)
+        Me.ReportButton.TabIndex = 7
+        Me.ReportButton.Text = "Report"
+        Me.ReportButton.UseVisualStyleBackColor = False
         '
         'StatusStrip1
         '
@@ -153,6 +153,19 @@ Partial Class AdminNavigationForm
         Me.StatusStrip1.Size = New System.Drawing.Size(480, 22)
         Me.StatusStrip1.TabIndex = 8
         Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(79, 17)
+        Me.ToolStripStatusLabel1.Text = "Employee ID: "
+        '
+        'EmployeeIDToolStripLabel
+        '
+        Me.EmployeeIDToolStripLabel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.EmployeeIDToolStripLabel.Name = "EmployeeIDToolStripLabel"
+        Me.EmployeeIDToolStripLabel.Size = New System.Drawing.Size(0, 17)
         '
         'Label3
         '
@@ -176,19 +189,6 @@ Partial Class AdminNavigationForm
         Me.Panel1.Size = New System.Drawing.Size(480, 100)
         Me.Panel1.TabIndex = 10
         '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(79, 17)
-        Me.ToolStripStatusLabel1.Text = "Employee ID: "
-        '
-        'EmployeeIDToolStripLabel
-        '
-        Me.EmployeeIDToolStripLabel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.EmployeeIDToolStripLabel.Name = "EmployeeIDToolStripLabel"
-        Me.EmployeeIDToolStripLabel.Size = New System.Drawing.Size(0, 17)
-        '
         'AdminNavigationForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -199,12 +199,12 @@ Partial Class AdminNavigationForm
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.ReportButton)
+        Me.Controls.Add(Me.PaymentButton)
+        Me.Controls.Add(Me.LogoutButton)
+        Me.Controls.Add(Me.MemberButton)
+        Me.Controls.Add(Me.MenuButton)
+        Me.Controls.Add(Me.OrderButton)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "AdminNavigationForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -220,12 +220,12 @@ Partial Class AdminNavigationForm
 
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button6 As Button
+    Friend WithEvents OrderButton As Button
+    Friend WithEvents MenuButton As Button
+    Friend WithEvents MemberButton As Button
+    Friend WithEvents LogoutButton As Button
+    Friend WithEvents PaymentButton As Button
+    Friend WithEvents ReportButton As Button
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents Label3 As Label
     Friend WithEvents Panel1 As Panel

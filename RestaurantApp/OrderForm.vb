@@ -58,6 +58,7 @@ Public Class OrderForm
 
         LoadData()
 
+        'Mengubah ukuran TextBox
         TextBox1.AutoSize = False
         TextBox2.AutoSize = False
         TextBox1.Height = 30
@@ -298,7 +299,7 @@ Public Class OrderForm
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub CloseButton_Click(sender As Object, e As EventArgs) Handles CloseButton.Click
         Close()
     End Sub
 

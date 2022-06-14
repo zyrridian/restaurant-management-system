@@ -41,7 +41,7 @@ Partial Class OrderForm
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.CloseButton = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -254,7 +254,7 @@ Partial Class OrderForm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(218, Byte), Integer), CType(CType(41, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Controls.Add(Me.CloseButton)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlText
@@ -263,18 +263,18 @@ Partial Class OrderForm
         Me.Panel1.Size = New System.Drawing.Size(1280, 100)
         Me.Panel1.TabIndex = 18
         '
-        'Button2
+        'CloseButton
         '
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Button2.Location = New System.Drawing.Point(1250, 0)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(30, 30)
-        Me.Button2.TabIndex = 25
-        Me.Button2.Text = "x"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.CloseButton.FlatAppearance.BorderSize = 0
+        Me.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CloseButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CloseButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.CloseButton.Location = New System.Drawing.Point(1250, 0)
+        Me.CloseButton.Name = "CloseButton"
+        Me.CloseButton.Size = New System.Drawing.Size(30, 30)
+        Me.CloseButton.TabIndex = 25
+        Me.CloseButton.Text = "x"
+        Me.CloseButton.UseVisualStyleBackColor = True
         '
         'OrderForm
         '
@@ -333,5 +333,5 @@ Partial Class OrderForm
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Button2 As Button
+    Friend WithEvents CloseButton As Button
 End Class
