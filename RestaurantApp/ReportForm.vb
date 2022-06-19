@@ -82,15 +82,8 @@ Public Class ReportForm
             'Hitung pendapatan dalam satuan juta, lalu tambahkan ke Chart
             profit /= 1000000
 
-            '(opsional) Menampilkan diagram untuk carbo & protein ketika CheckBox1 bertanda centang
-            If CheckBox1.Checked = True Then
-                Chart1.Titles("Title1").Text = "Carbo and Protein"
-                Chart1.Series("Carbo").Points.AddXY(thisDate.ToString("MMMM"), Math.Round(carbo, 2))
-                Chart1.Series("Protein").Points.AddXY(thisDate.ToString("MMMM"), Math.Round(protein, 2))
-            Else
-                Chart1.Titles("Title1").Text = "Income in Million"
-                Chart1.Series("Income").Points.AddXY(thisDate.ToString("MMMM"), Math.Round(profit, 2))
-            End If
+            Chart1.Titles("Title1").Text = "Income in Million"
+            Chart1.Series("Income").Points.AddXY(thisDate.ToString("MMMM"), Math.Round(profit, 2))
             num += 1
         Next
 
@@ -106,4 +99,5 @@ Public Class ReportForm
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Close()
     End Sub
+
 End Class

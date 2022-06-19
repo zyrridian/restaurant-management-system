@@ -27,6 +27,17 @@ Public Class OrderForm
 
     End Sub
 
+    Public Sub ComboBoxMember() 'Menampilkan daftar Member
+        Call Koneksi()
+        cmd = New SqlCommand("SELECT MemberID, Name FROM MsMember", conn)
+        Dim dt As New DataTable()
+        dt.Load(cmd.ExecuteReader)
+        ComboBox1.DataSource = dt
+        ComboBox1.ValueMember = "MemberID"
+        ComboBox1.DisplayMember = "Name"
+        cmd.Dispose()
+    End Sub
+
     Public Sub BuatTabel() 'Membuat tabel di DataGridView2
         DataGridView2.Columns.Clear()
         DataGridView2.Columns.Add("name", "Name")
@@ -41,6 +52,7 @@ Public Class OrderForm
 
         Call BuatTabel()
         Call Koneksi()
+        Call ComboBoxMember()
         da = New SqlDataAdapter("SELECT MenuID, Name, Price, Carbo, Protein, Photo FROM MsMenu", conn)
         ds = New DataSet
         da.Fill(ds, "MsMenu")
@@ -236,64 +248,75 @@ Public Class OrderForm
 
         If result = DialogResult.Yes Then
 
-            GenerateOrderHeaderID()
-            Call Koneksi()
+            'Validasi jika data kosong
+            If DataGridView2.Rows.Count <= 1 Or
+                DataGridView2.Rows(0).Cells(0).Value = "" Or
+                ComboBox1.SelectedIndex <= -1 Then
 
-            'Masukkan data ke tabel OrderHeader
-            Dim insertOrderHeader As New SqlCommand("INSERT INTO OrderHeader VALUES (@OrderHeaderID, @EmployeeID, @MemberID, @Date, @PaymentType, @CardNumber, @Bank)", conn)
-            insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@OrderHeaderID", .Value = orderHeaderID})
-            insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@EmployeeID", .Value = AdminNavigationForm.EmployeeIDToolStripLabel.Text})
-            insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@MemberID", .Value = 1})
-            insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@Date", .Value = thisDate})
-            insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@PaymentType", .Value = ""})
-            insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@CardNumber", .Value = ""})
-            insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@Bank", .Value = ""})
-            insertOrderHeader.ExecuteNonQuery()
-            insertOrderHeader.Dispose()
+                MsgBox("Anda belum memilih menu")
 
-            Dim name As String
-            Dim menuID As Integer
-            Dim qty As Integer
-            Dim totalCarbo As Integer
-            Dim totalProtein As Integer
-            Dim totalPrice As Integer
+            Else
 
-            'Lakukan pengulangan (for) untuk memasukkan semua baris yang ada pada DataGridView2
-            For row As Integer = 0 To DataGridView2.Rows.Count - 2
+                Call GenerateOrderHeaderID()
+                Call Koneksi()
 
-                name = DataGridView2.Rows(row).Cells(0).Value
-                qty = DataGridView2.Rows(row).Cells(1).Value
-                totalCarbo = DataGridView2.Rows(row).Cells(2).Value
-                totalProtein = DataGridView2.Rows(row).Cells(3).Value
-                totalPrice = DataGridView2.Rows(row).Cells(5).Value
+                'Masukkan data ke tabel OrderHeader
+                Dim insertOrderHeader As New SqlCommand("INSERT INTO OrderHeader VALUES (@OrderHeaderID, @EmployeeID, @MemberID, @Date, @PaymentType, @CardNumber, @Bank)", conn)
+                insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@OrderHeaderID", .Value = orderHeaderID})
+                insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@EmployeeID", .Value = AdminNavigationForm.EmployeeIDToolStripLabel.Text})
+                insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@MemberID", .Value = ComboBox1.SelectedValue})
+                insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@Date", .Value = thisDate})
+                insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@PaymentType", .Value = ""})
+                insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@CardNumber", .Value = ""})
+                insertOrderHeader.Parameters.Add(New SqlParameter With {.ParameterName = "@Bank", .Value = ""})
+                insertOrderHeader.ExecuteNonQuery()
+                insertOrderHeader.Dispose()
 
-                'Mengambil MenuID berdasarkan nama yang ada di TextBox1
-                Dim read As New SqlCommand("SELECT * FROM MsMenu WHERE Name = @Name", conn)
-                read.Parameters.Add(New SqlParameter With {.ParameterName = "@Name", .Value = name})
-                dr = read.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    menuID = dr!MenuID
-                End If
-                dr.Close()
-                read.Dispose()
+                Dim name As String
+                Dim menuID As Integer
+                Dim qty As Integer
+                Dim totalCarbo As Integer
+                Dim totalProtein As Integer
+                Dim totalPrice As Integer
 
-                'Memasukkan data ke tabel OrderDetail
-                Dim insert As New SqlCommand("INSERT INTO OrderDetail VALUES (@OrderHeaderID, @MenuID, @Qty, @TotalPrice, @TotalCarbo, @TotalProtein, @Status)", conn)
-                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@OrderHeaderID", .Value = orderHeaderID})
-                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@MenuID", .Value = menuID})
-                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@Qty", .Value = qty})
-                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@TotalPrice", .Value = totalPrice})
-                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@TotalCarbo", .Value = totalCarbo})
-                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@TotalProtein", .Value = totalProtein})
-                insert.Parameters.Add(New SqlParameter With {.ParameterName = "@Status", .Value = "pending"})
-                insert.ExecuteNonQuery()
-                insert.Dispose()
+                'Lakukan pengulangan (for) untuk memasukkan semua baris yang ada pada DataGridView2
+                For row As Integer = 0 To DataGridView2.Rows.Count - 2
 
-            Next
+                    name = DataGridView2.Rows(row).Cells(0).Value
+                    qty = DataGridView2.Rows(row).Cells(1).Value
+                    totalCarbo = DataGridView2.Rows(row).Cells(2).Value
+                    totalProtein = DataGridView2.Rows(row).Cells(3).Value
+                    totalPrice = DataGridView2.Rows(row).Cells(5).Value
 
-            MsgBox("Order berhasil")
-            LoadData()
+                    'Mengambil MenuID berdasarkan nama yang ada di TextBox1
+                    Dim read As New SqlCommand("SELECT * FROM MsMenu WHERE Name = @Name", conn)
+                    read.Parameters.Add(New SqlParameter With {.ParameterName = "@Name", .Value = name})
+                    dr = read.ExecuteReader
+                    dr.Read()
+                    If dr.HasRows Then
+                        menuID = dr!MenuID
+                    End If
+                    dr.Close()
+                    read.Dispose()
+
+                    'Memasukkan data ke tabel OrderDetail
+                    Dim insert As New SqlCommand("INSERT INTO OrderDetail VALUES (@OrderHeaderID, @MenuID, @Qty, @TotalPrice, @TotalCarbo, @TotalProtein, @Status)", conn)
+                    insert.Parameters.Add(New SqlParameter With {.ParameterName = "@OrderHeaderID", .Value = orderHeaderID})
+                    insert.Parameters.Add(New SqlParameter With {.ParameterName = "@MenuID", .Value = menuID})
+                    insert.Parameters.Add(New SqlParameter With {.ParameterName = "@Qty", .Value = qty})
+                    insert.Parameters.Add(New SqlParameter With {.ParameterName = "@TotalPrice", .Value = totalPrice})
+                    insert.Parameters.Add(New SqlParameter With {.ParameterName = "@TotalCarbo", .Value = totalCarbo})
+                    insert.Parameters.Add(New SqlParameter With {.ParameterName = "@TotalProtein", .Value = totalProtein})
+                    insert.Parameters.Add(New SqlParameter With {.ParameterName = "@Status", .Value = "pending"})
+                    insert.ExecuteNonQuery()
+                    insert.Dispose()
+
+                Next
+
+                MsgBox("Order berhasil")
+                LoadData()
+
+            End If
 
         End If
 
