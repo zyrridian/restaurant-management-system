@@ -82,7 +82,7 @@ Public Class ReportForm
             'Hitung pendapatan dalam satuan juta, lalu tambahkan ke Chart
             profit /= 1000000
 
-            Chart1.Titles("Title1").Text = "Income in Million"
+            'Ubah menjadi 2 angka di belakang koma
             Chart1.Series("Income").Points.AddXY(thisDate.ToString("MMMM"), Math.Round(profit, 2))
             num += 1
         Next

@@ -122,6 +122,7 @@ Partial Class ReportForm
         Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(12, 206)
         Me.Chart1.Name = "Chart1"
+        Me.Chart1.RightToLeft = System.Windows.Forms.RightToLeft.No
         Series1.ChartArea = "ChartArea1"
         Series1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(44, Byte), Integer))
         Series1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
