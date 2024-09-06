@@ -42,12 +42,13 @@ This is a Windows Forms-based Restaurant Management App developed using **VB.NET
 
 ## Screenshots
 
-![ss1](httpsgithub.comuser-attachmentsassetscb85c15e-35c5-4488-8950-fd51f8b09223)
-![ss2](httpsgithub.comuser-attachmentsassets75bfdf73-4bd3-4338-997c-9316c14bcee5)
-![ss3](httpsgithub.comuser-attachmentsassets3a4a8af1-7bda-4026-ac34-4785668d878a)
-![ss4](httpsgithub.comuser-attachmentsassets6d6e544f-8dd4-463c-9e97-c3a601d95a8e)
-![ss5](httpsgithub.comuser-attachmentsassetsbc2e3fee-8196-4661-aa53-0d62936b0aea)
-![ss6](httpsgithub.comuser-attachmentsassets1c3547d8-7d6d-4632-965b-6d7b694b2dd3)
-![ss7](httpsgithub.comuser-attachmentsassets55211a70-6fd0-4f4c-bd0d-dd8885e6d420)
-![ss8](httpsgithub.comuser-attachmentsassets7cdf35d6-7b72-4001-9d17-9dc6b850251c)
-![ss9](httpsgithub.comuser-attachmentsassetscb36b32d-3ea1-4a92-a30b-238cabdbf51f)
+![ss1](https://github.com/user-attachments/assets/e226a22f-ce4d-4a35-be65-df7e7345e409)
+![ss2](https://github.com/user-attachments/assets/d800e535-5896-408f-9442-d587aff65393)
+![ss3](https://github.com/user-attachments/assets/06e7bf0b-282f-4129-9f94-eef9b660ffdf)
+![ss4](https://github.com/user-attachments/assets/b6b554eb-728d-4fd4-9abc-9423f8ec4d40)
+![ss5](https://github.com/user-attachments/assets/9b11de17-2331-4cfd-8165-80f7520414bf)
+![ss6](https://github.com/user-attachments/assets/428f6a6b-7028-40bd-94eb-1526a6cf5b9c)
+![ss7](https://github.com/user-attachments/assets/71ecb245-f709-4b0d-aaad-b5a45219da66)
+![ss8](https://github.com/user-attachments/assets/bbce24c5-43dc-4056-be1c-f0098093f5bb)
+![ss9](https://github.com/user-attachments/assets/fa933d68-f7ce-4758-82b5-19cfe1450715)
+
